@@ -1,6 +1,7 @@
+var dim = 4
 function insert(){
   const table = document.getElementById('t-images')
-  const dim = 4
+
   for(let i = 0; i < dim; i++){
       let row = ''
       for(let j = 0; j < dim; j++){
@@ -11,8 +12,20 @@ function insert(){
 }
 insert()
 function loadSync(){
-
+  
 }
 function loadAsync(){
-
+  
+  for(let i = 0; i < dim; i++){
+    let row = ''
+    for(let j = 0; j < dim; j++){
+      let xhr = new XMLHttpRequest()
+      xhr.open('GET','http://localhost:5000/api/images/test')
+      let im = document.getElementById(`i-${i}-${j}`)
+      xhr.send()
+      xhr.onload = function(){
+        im.src = xhr.responseText
+      }
+    }
+}
 }
