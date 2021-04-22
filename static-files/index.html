@@ -4,6 +4,31 @@
 
     </head>
     <body>
-        <h1>Test</h1>
+        <h1>Non blocking</h1>
+        <input type="button" value="Load Sync"/>
+        <input type="button" value="Load Async"/>
+        <table>
+            <tbody id="t-images" ></tbody>
+        </table>
+        <script>
+            function insert(){
+                const table = document.getElementById('t-images')
+                const dim = 4
+                for(let i = 0; i < dim; i++){
+                    let row = ''
+                    for(let j = 0; j < dim; j++){
+                    row += `<td><img id="i-${i}-${j}" ></td>`
+                    }
+                    table.innerHTML += `<tr>${row}</tr>`
+                }
+            }
+            insert()
+            function loadSync(){
+
+            }
+            function loadAsync(){
+
+            }
+        </script>
     </body>
 </html>

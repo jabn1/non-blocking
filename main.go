@@ -25,8 +25,9 @@ func registerRoutes() http.Handler {
 	r.Route("/api", func(r chi.Router) {
 		r.Get("/images/{name}", getImage)
 	})
-	fs := http.FileServer(http.Dir("/home/jose/Desktop/non-blocking/static-files"))
-	r.Handle("/", fs)
+	dir := "/home/jose/Desktop/non-blocking/static-files"
+
+	r.Handle("/", http.FileServer(http.Dir(dir)))
 	return r
 }
 
