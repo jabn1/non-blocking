@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/base64"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -12,8 +13,15 @@ import (
 
 var port string
 var dir = "/home/jose/Desktop/non-blocking/static-files"
+var isAsync bool
 
 func main() {
+	a := flag.Bool("a", false, "")
+	flag.Parse()
+	isAsync = *a
+	if isAsync {
+		fmt.Println("t")
+	}
 	port = "5000"
 	r := mux.NewRouter()
 	r.HandleFunc("/api/images/{name}", getImage)
